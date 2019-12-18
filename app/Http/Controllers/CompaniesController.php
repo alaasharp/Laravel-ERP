@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Companies;
+use App\Employees;
 use Image;
 
 
@@ -135,6 +136,7 @@ class CompaniesController extends Controller
        
 
         $delete->delete();
+        Employees::where('Company_id',$id)->delete();
 
         return redirect()->route('companies.index')->with('message','Deleted successfully');
     }
